@@ -217,6 +217,14 @@ section { padding:6rem 5vw; }
 .tag-com { background:#fde8e4; color:#9e2c24; }
 .proj-title { font-family:'Playfair Display',serif; font-size:1.02rem; color:var(--navy); margin-bottom:0.5rem; }
 .proj-desc { font-size:0.83rem; color:var(--text-3); line-height:1.75; }
+.proj-link {
+  display:inline-flex; align-items:center; gap:0.45rem;
+  margin-top:0.95rem; padding:0.5rem 0.85rem;
+  border:1px solid var(--border-2); border-radius:6px;
+  color:var(--navy); font-size:0.75rem; font-weight:500;
+  letter-spacing:0.04em; text-decoration:none; transition:all 0.2s;
+}
+.proj-link:hover { background:var(--navy); border-color:var(--navy); color:#fff; }
 
 .edu-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
 .edu-card {
@@ -471,6 +479,7 @@ section { padding:6rem 5vw; }
         <span class="proj-tag tag-geo" data-i="tag.geo">Geology</span>
         <div class="proj-title" data-i="p2.title">Geology Project Drafting</div>
         <p class="proj-desc" data-i="p2.desc">Prepared AutoCAD technical drawings for geology-related project planning and field implementation, including site layouts, work plans, and supporting project documentation.</p>
+        <a class="proj-link" href="https://drive.google.com/drive/folders/1mMof9kk91NNJdE4brdt4jMnkRbIgj449?usp=drive_link" target="_blank" rel="noopener noreferrer" data-i="p2.link">View AutoCAD Portfolio</a>
       </div>
     </div>
     <div class="proj-card reveal">
@@ -603,6 +612,7 @@ const T = {
     "p1.desc":"Developed a two-semester computer curriculum for elementary students (Grades 1–6), including interactive materials adapted for each age group at PesonaEdu.",
     "p2.title":"Geology Project Drafting",
     "p2.desc":"Prepared AutoCAD technical drawings for geology-related project planning and field implementation, including site layouts, work plans, and supporting project documentation.",
+    "p2.link":"View AutoCAD Portfolio",
     "p3.title":"Agricultural Waste Management",
     "p3.desc":"Led KKN community project at Universitas Pakuan — trained local residents to process agricultural waste into useful products, with follow-up evaluation post-program.",
     "edu.label":"Education","edu.title":"Education & Certifications",
@@ -658,6 +668,7 @@ const T = {
     "p1.desc":"Mengembangkan kurikulum komputer dua semester untuk siswa SD kelas 1–6, mencakup materi interaktif yang disesuaikan untuk setiap kelompok usia di PesonaEdu.",
     "p2.title":"Gambar Perencanaan Proyek Geologi",
     "p2.desc":"Menyusun gambar teknis AutoCAD untuk perencanaan dan pelaksanaan proyek geologi, termasuk tata letak lokasi, rencana kerja, dan dokumentasi pendukung proyek.",
+    "p2.link":"Lihat Portofolio AutoCAD",
     "p3.title":"Pengelolaan Limbah Pertanian",
     "p3.desc":"Memimpin proyek KKN Universitas Pakuan — melatih warga lokal mengolah limbah pertanian menjadi produk bermanfaat, dengan evaluasi lanjutan pasca program.",
     "edu.label":"Pendidikan","edu.title":"Pendidikan & Sertifikasi",
