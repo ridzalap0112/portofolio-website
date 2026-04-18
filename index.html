@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ridzal Ade Putera | Portfolio</title>
+<meta name="description" content="Portfolio website for Ridzal Ade Putera, covering education, data analysis, field operations, projects, and certifications.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d1b2a;
+  --navy-2: #162436;
+  --navy-3: #1e3148;
+  --gold: #b8965a;
+  --gold-light: #d4b07a;
+  --gold-pale: #f5edd8;
+  --cream: #f8f6f1;
+  --white: #ffffff;
+  --text: #0d1b2a;
+  --text-2: #3a4a5c;
+  --text-3: #6b7b8d;
+  --border: rgba(13,27,42,0.09);
+  --border-2: rgba(13,27,42,0.15);
+  --radius: 10px;
+  --radius-lg: 16px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Outfit',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:60px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5vw;
+  background:rgba(248,246,241,0.9);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo {
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem; color:var(--navy);
+}
+.nav-right { display:flex; align-items:center; gap:2rem; }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a {
+  font-size:0.76rem; font-weight:500;
+  letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--text-3); text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--navy); }
+.lang-toggle {
+  display:flex; align-items:center;
+  background:var(--navy); border-radius:100px; padding:3px; gap:2px;
+}
+.lang-btn {
+  font-size:0.68rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase;
+  border:none; cursor:pointer; padding:4px 12px; border-radius:100px;
+  transition:all 0.2s; background:transparent; color:rgba(255,255,255,0.4);
+}
+.lang-btn.active { background:var(--gold); color:var(--navy); }
+
+.hero {
+  min-height:100vh;
+  display:grid; grid-template-columns:1fr 400px;
+  gap:4rem; align-items:center;
+  padding:80px 5vw 0;
+  position:relative;
+}
+.hero::after {
+  content:''; position:absolute; top:0; right:0;
+  width:50%; height:100%;
+  background:linear-gradient(135deg,transparent 40%,rgba(184,150,90,0.04));
+  pointer-events:none;
+}
+.eyebrow {
+  display:flex; align-items:center; gap:10px;
+  font-size:0.7rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.4rem;
+}
+.eyebrow-line { width:28px; height:1px; background:var(--gold); }
+.hero-name {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,5.5vw,4.8rem);
+  line-height:1.05; color:var(--navy); margin-bottom:0.5rem;
+}
+.hero-name em { font-style:italic; color:var(--gold); }
+.hero-role { font-size:1rem; font-weight:300; color:var(--text-2); margin-bottom:1.8rem; letter-spacing:0.03em; }
+.hero-bio { font-size:0.91rem; line-height:1.85; color:var(--text-3); max-width:500px; margin-bottom:2.5rem; }
+.hero-cta { display:flex; gap:0.9rem; }
+.btn-dark {
+  background:var(--navy); color:#fff; padding:0.72rem 1.7rem; border-radius:var(--radius);
+  font-size:0.82rem; font-weight:500; letter-spacing:0.06em; text-decoration:none;
+  border:1.5px solid var(--navy); transition:background 0.2s,transform 0.15s;
+}
+.btn-dark:hover { background:var(--navy-2); transform:translateY(-1px); }
+.btn-ghost {
+  background:transparent; color:var(--navy); padding:0.72rem 1.7rem; border-radius:var(--radius);
+  font-size:0.82rem; font-weight:500; letter-spacing:0.06em; text-decoration:none;
+  border:1.5px solid var(--border-2); transition:all 0.2s;
+}
+.btn-ghost:hover { border-color:var(--navy); background:var(--navy); color:#fff; }
+
+.hero-card {
+  background:var(--navy); border-radius:var(--radius-lg); padding:2rem 1.8rem;
+  position:relative; overflow:hidden;
+}
+.hero-card::before {
+  content:''; position:absolute; bottom:-80px; right:-80px;
+  width:220px; height:220px; border-radius:50%;
+  border:50px solid rgba(184,150,90,0.07); pointer-events:none;
+}
+.avatar {
+  width:80px; height:80px; border-radius:50%;
+  border:2.5px solid rgba(184,150,90,0.5);
+  background:var(--navy-3);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; margin-bottom:1.1rem;
+}
+.avatar-initials { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold); }
+.avatar img { width:100%; height:100%; object-fit:cover; display:none; }
+.card-name { font-family:'Playfair Display',serif; font-size:1.15rem; color:#fff; margin-bottom:0.2rem; }
+.card-sub { font-size:0.77rem; color:rgba(255,255,255,0.38); font-weight:300; margin-bottom:1.4rem; line-height:1.55; }
+.stats-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.6rem; margin-bottom:1.4rem; }
+.stat {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(184,150,90,0.12);
+  border-radius:8px; padding:0.7rem 0.5rem; text-align:center;
+}
+.stat-n { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--gold); line-height:1; }
+.stat-l { font-size:0.62rem; color:rgba(255,255,255,0.35); letter-spacing:0.07em; text-transform:uppercase; margin-top:3px; }
+.card-info { display:flex; flex-direction:column; gap:0.55rem; }
+.info-row { display:flex; align-items:center; gap:0.7rem; }
+.info-icon {
+  width:30px; height:30px; flex-shrink:0;
+  background:rgba(184,150,90,0.1); border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+}
+.info-icon svg { width:14px; height:14px; stroke:var(--gold); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.info-text { font-size:0.79rem; color:rgba(255,255,255,0.58); }
+.upload-label {
+  display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.1rem; cursor:pointer;
+  font-size:0.74rem; color:rgba(184,150,90,0.75);
+  background:rgba(184,150,90,0.08); border:1px solid rgba(184,150,90,0.2);
+  border-radius:6px; padding:0.4rem 0.85rem; transition:all 0.2s;
+}
+.upload-label:hover { background:rgba(184,150,90,0.16); color:var(--gold-light); }
+.upload-label svg { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+
+section { padding:6rem 5vw; }
+.s-label {
+  display:flex; align-items:center; gap:10px;
+  font-size:0.69rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:0.6rem;
+}
+.s-line { width:22px; height:1px; background:var(--gold); }
+.s-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3vw,2.5rem); color:var(--navy); line-height:1.15; margin-bottom:0.5rem;
+}
+.s-sub { font-size:0.9rem; color:var(--text-3); line-height:1.8; max-width:520px; margin-bottom:3rem; }
+
+#skills { background:var(--navy); }
+#skills .s-label { color:var(--gold); }
+#skills .s-title { color:#fff; }
+#skills .s-sub { color:rgba(255,255,255,0.38); }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(175px,1fr)); gap:0.9rem; }
+.skill-card {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(184,150,90,0.13);
+  border-radius:var(--radius); padding:1.1rem 1.2rem; transition:all 0.22s; cursor:default;
+}
+.skill-card:hover { background:rgba(184,150,90,0.08); border-color:rgba(184,150,90,0.38); transform:translateY(-2px); }
+.skill-ico {
+  width:36px; height:36px; background:rgba(184,150,90,0.1);
+  border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem;
+}
+.skill-ico svg { width:18px; height:18px; stroke:var(--gold); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.skill-nm { font-size:0.84rem; font-weight:500; color:#fff; }
+.skill-ds { font-size:0.74rem; color:rgba(255,255,255,0.33); margin-top:0.2rem; }
+
+.timeline { position:relative; max-width:740px; }
+.tl-spine {
+  position:absolute; left:0; top:10px; bottom:20px; width:1px;
+  background:linear-gradient(to bottom,var(--gold),rgba(184,150,90,0));
+}
+.tl-item { padding-left:2.8rem; margin-bottom:3rem; position:relative; }
+.tl-dot {
+  position:absolute; left:-5px; top:8px; width:11px; height:11px; border-radius:50%;
+  border:2px solid var(--gold); background:var(--cream);
+}
+.tl-period { font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem; }
+.tl-role { font-family:'Playfair Display',serif; font-size:1.12rem; color:var(--navy); margin-bottom:0.15rem; }
+.tl-co { font-size:0.82rem; font-weight:500; color:var(--text-2); margin-bottom:0.75rem; }
+.tl-list { list-style:none; }
+.tl-list li {
+  font-size:0.86rem; color:var(--text-3); line-height:1.75;
+  padding-left:1rem; position:relative; margin-bottom:0.1rem;
+}
+.tl-list li::before { content:'–'; position:absolute; left:0; color:var(--gold); }
+
+#projects { background:#f0ede4; }
+.proj-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.2rem; }
+.proj-card {
+  background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--border);
+  overflow:hidden; transition:transform 0.25s,box-shadow 0.25s;
+}
+.proj-card:hover { transform:translateY(-4px); box-shadow:0 14px 36px rgba(13,27,42,0.08); }
+.proj-header {
+  height:120px; display:flex; align-items:center; justify-content:center;
+}
+.proj-header svg { width:40px; height:40px; fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.proj-body { padding:1.3rem 1.4rem; }
+.proj-tag {
+  display:inline-block; font-size:0.66rem; font-weight:500;
+  letter-spacing:0.1em; text-transform:uppercase;
+  padding:0.22rem 0.65rem; border-radius:4px; margin-bottom:0.6rem;
+}
+.tag-edu { background:#e9f0fe; color:#1a50a8; }
+.tag-geo { background:#e4f2e8; color:#176435; }
+.tag-com { background:#fde8e4; color:#9e2c24; }
+.proj-title { font-family:'Playfair Display',serif; font-size:1.02rem; color:var(--navy); margin-bottom:0.5rem; }
+.proj-desc { font-size:0.83rem; color:var(--text-3); line-height:1.75; }
+
+.edu-wrap { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
+.edu-card {
+  background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--border);
+  padding:1.6rem; margin-bottom:1rem;
+}
+.edu-ico {
+  width:40px; height:40px; background:var(--gold-pale); border-radius:9px;
+  display:flex; align-items:center; justify-content:center; margin-bottom:0.9rem;
+}
+.edu-ico svg { width:18px; height:18px; stroke:var(--gold); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.edu-deg { font-family:'Playfair Display',serif; font-size:1rem; color:var(--navy); margin-bottom:0.2rem; }
+.edu-sch { font-size:0.82rem; color:var(--text-3); margin-bottom:0.4rem; }
+.edu-yr { font-size:0.69rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
+.edu-extra { font-size:0.8rem; color:var(--text-3); margin-top:0.55rem; line-height:1.6; }
+.cert-stack { display:flex; flex-direction:column; gap:0.7rem; }
+.cert-item {
+  background:var(--white); border-radius:var(--radius); border:1px solid var(--border);
+  padding:0.9rem 1.1rem; display:flex; align-items:center; gap:0.9rem;
+}
+.cert-ico {
+  width:34px; height:34px; flex-shrink:0; background:var(--gold-pale);
+  border-radius:8px; display:flex; align-items:center; justify-content:center;
+}
+.cert-ico svg { width:16px; height:16px; stroke:var(--gold); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.cert-nm { font-size:0.85rem; font-weight:500; color:var(--navy); }
+.cert-is { font-size:0.74rem; color:var(--text-3); margin-top:0.1rem; }
+
+#contact { background:var(--navy); text-align:center; }
+#contact .s-label { justify-content:center; }
+#contact .s-line { display:none; }
+#contact .s-title { color:#fff; }
+#contact .s-sub { color:rgba(255,255,255,0.38); margin:0 auto 2.5rem; }
+.contact-grid { display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; margin-bottom:3rem; }
+.c-btn {
+  display:flex; align-items:center; gap:0.6rem;
+  background:rgba(255,255,255,0.05); border:1px solid rgba(184,150,90,0.2);
+  border-radius:var(--radius); padding:0.75rem 1.3rem;
+  color:rgba(255,255,255,0.65); text-decoration:none; font-size:0.84rem;
+  transition:all 0.2s;
+}
+.c-btn:hover { background:rgba(184,150,90,0.12); border-color:var(--gold); color:#fff; }
+.c-btn svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+.footer { font-size:0.73rem; color:rgba(255,255,255,0.2); border-top:1px solid rgba(255,255,255,0.07); padding-top:2rem; }
+
+@keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+.hero-text { animation:up 0.7s ease 0.1s both; }
+.hero-card { animation:up 0.7s ease 0.3s both; }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.55s ease,transform 0.55s ease; }
+.reveal.on { opacity:1; transform:none; }
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:90px;gap:2rem;}
+  .edu-wrap{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:560px){ section{padding:4rem 5vw;} .hero{padding-top:80px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Ridzal Ade Putera</div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" data-i="nav.about">About</a></li>
+      <li><a href="#skills" data-i="nav.skills">Skills</a></li>
+      <li><a href="#experience" data-i="nav.exp">Experience</a></li>
+      <li><a href="#projects" data-i="nav.proj">Projects</a></li>
+      <li><a href="#contact" data-i="nav.contact">Contact</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-id" onclick="setLang('id')">ID</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="about">
+  <div class="hero-text">
+    <div class="eyebrow"><span class="eyebrow-line"></span><span data-i="hero.eyebrow">Portfolio · 2025</span></div>
+    <h1 class="hero-name">Ridzal<br><em>Ade Putera</em></h1>
+    <p class="hero-role" data-i="hero.role">Educator · Data Analyst · Field Operator</p>
+    <p class="hero-bio" data-i="hero.bio">Bachelor of Pharmacy graduate with hands-on experience spanning computer education, geoelectric field operations, and academic instruction. Detail-oriented, adaptable, and driven by continuous learning.</p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-dark" data-i="hero.cta1">View Experience</a>
+      <a href="mailto:ridzaladeputra@gmail.com" class="btn-ghost" data-i="hero.cta2">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="avatar" id="avatarBox">
+      <img id="profileImg" src="data:image/jpeg;base64,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" alt="Ridzal Ade Putera" style="display:block;">
+      <span class="avatar-initials" id="avatarInitials" style="display:none;">RA</span>
+    </div>
+    <div class="card-name">Ridzal Ade Putera</div>
+    <div class="card-sub" data-i="card.sub">S1 Farmasi — Universitas Pakuan&#10;Kota Bogor, Jawa Barat</div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-n">4+</div><div class="stat-l" data-i="stat.exp">Yrs Exp</div></div>
+      <div class="stat"><div class="stat-n">3.34</div><div class="stat-l">GPA</div></div>
+      <div class="stat"><div class="stat-n">519</div><div class="stat-l">TOEFL</div></div>
+    </div>
+    <div class="card-info">
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <span class="info-text">Kota Bogor, Jawa Barat</span>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <span class="info-text">+62 812 9402 0496</span>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span class="info-text"><a href="mailto:ridzaladeputra@gmail.com">ridzaladeputra@gmail.com</a></span>
+      </div>
+    </div>
+    <label class="upload-label" for="photoUpload">
+      <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <span data-i="upload">Upload Photo</span>
+    </label>
+    <input type="file" id="photoUpload" accept="image/*" style="display:none">
+  </div>
+</section>
+
+<section id="skills">
+  <div class="s-label"><span class="s-line"></span><span data-i="skills.label">Skills</span></div>
+  <h2 class="s-title" data-i="skills.title">Skills &amp; Tools</h2>
+  <p class="s-sub" data-i="skills.sub">Technical and interpersonal capabilities developed through professional experience and education.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+      <div class="skill-nm">Microsoft Office</div>
+      <div class="skill-ds" data-i="sk.office">Word, Excel, PowerPoint</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="skill-nm">IBM SPSS</div>
+      <div class="skill-ds" data-i="sk.spss">Statistical Analysis</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+      <div class="skill-nm">Adobe Creative</div>
+      <div class="skill-ds" data-i="sk.adobe">Premiere &amp; Photoshop</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="skill-nm">Basic Programming</div>
+      <div class="skill-ds">HTML &amp; CSS</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="skill-nm" data-i="sk.comm.nm">Communication</div>
+      <div class="skill-ds" data-i="sk.comm.ds">Teamwork &amp; Leadership</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+      <div class="skill-nm" data-i="sk.lab.nm">Lab Analysis</div>
+      <div class="skill-ds" data-i="sk.lab.ds">Gravimetry &amp; Extraction</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div>
+      <div class="skill-nm" data-i="sk.geo.nm">Geoelectric Survey</div>
+      <div class="skill-ds" data-i="sk.geo.ds">Groundwater Mapping</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-ico"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div class="skill-nm" data-i="sk.teach.nm">Teaching</div>
+      <div class="skill-ds" data-i="sk.teach.ds">Curriculum Development</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="s-label"><span class="s-line"></span><span data-i="exp.label">Experience</span></div>
+  <h2 class="s-title reveal" data-i="exp.title">Work Experience</h2>
+  <p class="s-sub reveal" data-i="exp.sub">A diverse professional journey across education, field operations, and industry.</p>
+  <div class="timeline">
+    <div class="tl-spine"></div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Mar 2025 – Mar 2026</div>
+      <div class="tl-role" data-i="e1.role">Computer Teacher</div>
+      <div class="tl-co">PesonaEdu</div>
+      <ul class="tl-list">
+        <li data-i="e1.t1">Delivered computer lessons for elementary students (Grades 1–6)</li>
+        <li data-i="e1.t2">Developed interactive learning materials tailored to each grade level</li>
+        <li data-i="e1.t3">Prepared academic administration across two semesters</li>
+        <li data-i="e1.t4">Participated actively in academic and non-academic school activities</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Feb 2024 – Mar 2025</div>
+      <div class="tl-role" data-i="e2.role">Geoelectric Operator</div>
+      <div class="tl-co">CV. Bratasena</div>
+      <ul class="tl-list">
+        <li data-i="e2.t1">Conducted groundwater surveys using geoelectric methods</li>
+        <li data-i="e2.t2">Determined and installed measurement points based on coordinate intervals</li>
+        <li data-i="e2.t3">Processed and analyzed geoelectric survey data</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">May 2023 – Dec 2023</div>
+      <div class="tl-role" data-i="e3.role">Junior High School Teacher</div>
+      <div class="tl-co">Sekolah Islam Ibnu Hajar</div>
+      <ul class="tl-list">
+        <li data-i="e3.t1">Delivered classroom instruction and student mentoring</li>
+        <li data-i="e3.t2">Prepared teaching administration and lesson materials</li>
+        <li data-i="e3.t3">Developed learning media to support student understanding</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Dec 2021 – Aug 2022</div>
+      <div class="tl-role" data-i="e4.role">Packing Staff</div>
+      <div class="tl-co">All Baby Shop</div>
+      <ul class="tl-list">
+        <li data-i="e4.t1">Managed packaging and quality checking of customer orders</li>
+        <li data-i="e4.t2">Recorded incoming and outgoing inventory</li>
+        <li data-i="e4.t3">Coordinated shipment with logistics services</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="s-label"><span class="s-line"></span><span data-i="proj.label">Projects</span></div>
+  <h2 class="s-title reveal" data-i="proj.title">Featured Projects</h2>
+  <p class="s-sub reveal" data-i="proj.sub">Selected work spanning professional and academic contexts.</p>
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <div class="proj-header" style="background:#edf3fc;">
+        <svg viewBox="0 0 24 24" style="stroke:#2a5db0;">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8l2 2-2 2M12 10h3"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <span class="proj-tag tag-edu" data-i="tag.edu">Education</span>
+        <div class="proj-title" data-i="p1.title">Interactive Computer Learning</div>
+        <p class="proj-desc" data-i="p1.desc">Developed a two-semester computer curriculum for elementary students (Grades 1–6), including interactive materials adapted for each age group at PesonaEdu.</p>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-header" style="background:#e6f4ea;">
+        <svg viewBox="0 0 24 24" style="stroke:#1a6e36;">
+          <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <span class="proj-tag tag-geo" data-i="tag.geo">Geoscience</span>
+        <div class="proj-title" data-i="p2.title">Groundwater Geoelectric Survey</div>
+        <p class="proj-desc" data-i="p2.desc">Executed multi-site groundwater surveys using geoelectric methods: coordinate-based point installation, data acquisition, and full analysis of survey results.</p>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-header" style="background:#fdecea;">
+        <svg viewBox="0 0 24 24" style="stroke:#9e2c24;">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <span class="proj-tag tag-com" data-i="tag.com">Community</span>
+        <div class="proj-title" data-i="p3.title">Agricultural Waste Management</div>
+        <p class="proj-desc" data-i="p3.desc">Led KKN community project at Universitas Pakuan — trained local residents to process agricultural waste into useful products, with follow-up evaluation post-program.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="s-label"><span class="s-line"></span><span data-i="edu.label">Education</span></div>
+  <h2 class="s-title reveal" data-i="edu.title">Education &amp; Certifications</h2>
+  <p class="s-sub reveal" data-i="edu.sub">Academic background and professional certifications that underpin my competencies.</p>
+  <div class="edu-wrap">
+    <div>
+      <div class="edu-card reveal">
+        <div class="edu-ico"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div class="edu-deg" data-i="edu1.deg">Bachelor of Pharmacy (S1 Farmasi)</div>
+        <div class="edu-sch">Universitas Pakuan</div>
+        <div class="edu-yr">2018 – 2022</div>
+        <p class="edu-extra" data-i="edu1.extra">GPA: 3.34 · Statistical data analysis, gravimetry, and extraction methods</p>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="edu-deg" data-i="edu2.deg">High School — Science Major</div>
+        <div class="edu-sch">SMA YPHB</div>
+        <div class="edu-yr">2014 – 2017</div>
+        <p class="edu-extra" data-i="edu2.extra">Representative in cultural exchange programs · TOEFL: 519</p>
+      </div>
+    </div>
+    <div class="cert-stack">
+      <div class="cert-item reveal">
+        <div class="cert-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <div class="cert-nm" data-i="cert1.nm">Urban Drainage Site Supervisor</div>
+          <div class="cert-is">BNSP · 2024–2029</div>
+        </div>
+      </div>
+      <div class="cert-item reveal">
+        <div class="cert-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div>
+          <div class="cert-nm" data-i="cert2.nm">Microsoft Office Certification</div>
+          <div class="cert-is">LKP Borju · 2024–2026</div>
+        </div>
+      </div>
+      <div class="cert-item reveal">
+        <div class="cert-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div>
+          <div class="cert-nm" data-i="cert3.nm">Microsoft Office Professional</div>
+          <div class="cert-is">MySkill · 2024–2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="s-label"><span class="s-line"></span><span data-i="contact.label">Contact</span></div>
+  <h2 class="s-title" data-i="contact.title">Let's Connect</h2>
+  <p class="s-sub" data-i="contact.sub">Open to job opportunities, collaborations, or just a good conversation. Feel free to reach out!</p>
+  <div class="contact-grid">
+    <a href="mailto:ridzaladeputra@gmail.com" class="c-btn">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      ridzaladeputra@gmail.com
+    </a>
+    <a href="tel:+6281294020496" class="c-btn">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +62 812 9402 0496
+    </a>
+    <a href="https://www.linkedin.com/in/ridzal-ade-putera-80b264177" target="_blank" class="c-btn">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/ridzalap0112" target="_blank" class="c-btn">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      GitHub
+    </a>
+  </div>
+  <p class="footer">© 2025 Ridzal Ade Putera · Kota Bogor, Jawa Barat, Indonesia</p>
+</section>
+
+<script>
+const T = {
+  en: {
+    "nav.about":"About","nav.skills":"Skills","nav.exp":"Experience","nav.proj":"Projects","nav.contact":"Contact",
+    "hero.eyebrow":"Portfolio · 2025",
+    "hero.role":"Educator · Data Analyst · Field Operator",
+    "hero.bio":"Bachelor of Pharmacy graduate with hands-on experience spanning computer education, geoelectric field operations, and academic instruction. Detail-oriented, adaptable, and driven by continuous learning.",
+    "hero.cta1":"View Experience","hero.cta2":"Get in Touch",
+    "card.sub":"S1 Farmasi — Universitas Pakuan\nKota Bogor, Jawa Barat",
+    "stat.exp":"Yrs Exp","upload":"Upload Photo",
+    "skills.label":"Skills","skills.title":"Skills & Tools",
+    "skills.sub":"Technical and interpersonal capabilities developed through professional experience and education.",
+    "sk.office":"Word, Excel, PowerPoint","sk.spss":"Statistical Analysis","sk.adobe":"Premiere & Photoshop",
+    "sk.comm.nm":"Communication","sk.comm.ds":"Teamwork & Leadership",
+    "sk.lab.nm":"Lab Analysis","sk.lab.ds":"Gravimetry & Extraction",
+    "sk.geo.nm":"Geoelectric Survey","sk.geo.ds":"Groundwater Mapping",
+    "sk.teach.nm":"Teaching","sk.teach.ds":"Curriculum Development",
+    "exp.label":"Experience","exp.title":"Work Experience",
+    "exp.sub":"A diverse professional journey across education, field operations, and industry.",
+    "e1.role":"Computer Teacher",
+    "e1.t1":"Delivered computer lessons for elementary students (Grades 1–6)",
+    "e1.t2":"Developed interactive learning materials tailored to each grade level",
+    "e1.t3":"Prepared academic administration across two semesters",
+    "e1.t4":"Participated actively in academic and non-academic school activities",
+    "e2.role":"Geoelectric Operator",
+    "e2.t1":"Conducted groundwater surveys using geoelectric methods",
+    "e2.t2":"Determined and installed measurement points based on coordinate intervals",
+    "e2.t3":"Processed and analyzed geoelectric survey data",
+    "e3.role":"Junior High School Teacher",
+    "e3.t1":"Delivered classroom instruction and student mentoring",
+    "e3.t2":"Prepared teaching administration and lesson materials",
+    "e3.t3":"Developed learning media to support student understanding",
+    "e4.role":"Packing Staff",
+    "e4.t1":"Managed packaging and quality checking of customer orders",
+    "e4.t2":"Recorded incoming and outgoing inventory",
+    "e4.t3":"Coordinated shipment with logistics services",
+    "proj.label":"Projects","proj.title":"Featured Projects",
+    "proj.sub":"Selected work spanning professional and academic contexts.",
+    "tag.edu":"Education","tag.geo":"Geoscience","tag.com":"Community",
+    "p1.title":"Interactive Computer Learning",
+    "p1.desc":"Developed a two-semester computer curriculum for elementary students (Grades 1–6), including interactive materials adapted for each age group at PesonaEdu.",
+    "p2.title":"Groundwater Geoelectric Survey",
+    "p2.desc":"Executed multi-site groundwater surveys using geoelectric methods: coordinate-based point installation, data acquisition, and full analysis of survey results.",
+    "p3.title":"Agricultural Waste Management",
+    "p3.desc":"Led KKN community project at Universitas Pakuan — trained local residents to process agricultural waste into useful products, with follow-up evaluation post-program.",
+    "edu.label":"Education","edu.title":"Education & Certifications",
+    "edu.sub":"Academic background and professional certifications that underpin my competencies.",
+    "edu1.deg":"Bachelor of Pharmacy (S1 Farmasi)",
+    "edu1.extra":"GPA: 3.34 · Statistical data analysis, gravimetry, and extraction methods",
+    "edu2.deg":"High School — Science Major",
+    "edu2.extra":"Representative in cultural exchange programs · TOEFL: 519",
+    "cert1.nm":"Urban Drainage Site Supervisor",
+    "cert2.nm":"Microsoft Office Certification",
+    "cert3.nm":"Microsoft Office Professional",
+    "contact.label":"Contact","contact.title":"Let's Connect",
+    "contact.sub":"Open to job opportunities, collaborations, or just a good conversation. Feel free to reach out!"
+  },
+  id: {
+    "nav.about":"Tentang","nav.skills":"Keahlian","nav.exp":"Pengalaman","nav.proj":"Proyek","nav.contact":"Kontak",
+    "hero.eyebrow":"Portofolio · 2025",
+    "hero.role":"Pendidik · Analis Data · Operator Lapangan",
+    "hero.bio":"Lulusan S1 Farmasi dengan pengalaman nyata di bidang pendidikan komputer, operasi lapangan geoelectric, dan pengajaran akademik. Teliti, mudah beradaptasi, dan berkomitmen pada pembelajaran berkelanjutan.",
+    "hero.cta1":"Lihat Pengalaman","hero.cta2":"Hubungi Saya",
+    "card.sub":"S1 Farmasi — Universitas Pakuan\nKota Bogor, Jawa Barat",
+    "stat.exp":"Thn Kerja","upload":"Upload Foto",
+    "skills.label":"Keahlian","skills.title":"Keahlian & Alat",
+    "skills.sub":"Kemampuan teknis dan interpersonal yang dikembangkan melalui pengalaman kerja dan pendidikan.",
+    "sk.office":"Word, Excel, PowerPoint","sk.spss":"Analisis Statistik","sk.adobe":"Premiere & Photoshop",
+    "sk.comm.nm":"Komunikasi","sk.comm.ds":"Kerja Tim & Kepemimpinan",
+    "sk.lab.nm":"Analisis Laboratorium","sk.lab.ds":"Gravimetri & Ekstraksi",
+    "sk.geo.nm":"Survei Geoelectric","sk.geo.ds":"Pemetaan Air Tanah",
+    "sk.teach.nm":"Pengajaran","sk.teach.ds":"Pengembangan Kurikulum",
+    "exp.label":"Pengalaman","exp.title":"Pengalaman Kerja",
+    "exp.sub":"Perjalanan profesional yang beragam di bidang pendidikan, operasi lapangan, dan industri.",
+    "e1.role":"Guru Komputer",
+    "e1.t1":"Mengajar pelajaran komputer untuk siswa SD kelas 1–6",
+    "e1.t2":"Mengembangkan materi pembelajaran interaktif sesuai tingkatan siswa",
+    "e1.t3":"Menyiapkan administrasi akademik selama dua semester",
+    "e1.t4":"Berpartisipasi aktif dalam kegiatan akademik dan non-akademik sekolah",
+    "e2.role":"Operator Geoelectric",
+    "e2.t1":"Melakukan survei air tanah menggunakan metode geoelectric",
+    "e2.t2":"Menentukan dan memasang titik pengukuran berdasarkan interval koordinat",
+    "e2.t3":"Memproses dan menganalisis data hasil survei geoelectric",
+    "e3.role":"Guru SMP",
+    "e3.t1":"Mengajar di kelas dan melakukan bimbingan kepada siswa",
+    "e3.t2":"Menyiapkan administrasi pengajaran dan materi pelajaran",
+    "e3.t3":"Mengembangkan media pembelajaran untuk mendukung pemahaman siswa",
+    "e4.role":"Staf Pengemasan",
+    "e4.t1":"Mengelola pengemasan dan pemeriksaan kualitas pesanan pelanggan",
+    "e4.t2":"Mencatat barang masuk dan keluar",
+    "e4.t3":"Mengkoordinasi pengiriman dengan layanan logistik",
+    "proj.label":"Proyek","proj.title":"Proyek Unggulan",
+    "proj.sub":"Karya pilihan dari konteks profesional dan akademis.",
+    "tag.edu":"Pendidikan","tag.geo":"Geosains","tag.com":"Komunitas",
+    "p1.title":"Pembelajaran Komputer Interaktif",
+    "p1.desc":"Mengembangkan kurikulum komputer dua semester untuk siswa SD kelas 1–6, mencakup materi interaktif yang disesuaikan untuk setiap kelompok usia di PesonaEdu.",
+    "p2.title":"Survei Air Tanah Geoelectric",
+    "p2.desc":"Melaksanakan survei air tanah multi-lokasi dengan metode geoelectric: pemasangan titik berbasis koordinat, akuisisi data, dan analisis lengkap hasil survei.",
+    "p3.title":"Pengelolaan Limbah Pertanian",
+    "p3.desc":"Memimpin proyek KKN Universitas Pakuan — melatih warga lokal mengolah limbah pertanian menjadi produk bermanfaat, dengan evaluasi lanjutan pasca program.",
+    "edu.label":"Pendidikan","edu.title":"Pendidikan & Sertifikasi",
+    "edu.sub":"Latar belakang akademis dan sertifikasi profesional yang mendukung kompetensi saya.",
+    "edu1.deg":"Sarjana Farmasi (S1 Farmasi)",
+    "edu1.extra":"IPK: 3.34 · Analisis data statistik, gravimetri, dan metode ekstraksi",
+    "edu2.deg":"SMA — Jurusan IPA",
+    "edu2.extra":"Perwakilan sekolah dalam program pertukaran budaya · TOEFL: 519",
+    "cert1.nm":"Pengawas Lapangan Drainase Perkotaan",
+    "cert2.nm":"Sertifikasi Microsoft Office",
+    "cert3.nm":"Microsoft Office Professional",
+    "contact.label":"Kontak","contact.title":"Mari Terhubung",
+    "contact.sub":"Terbuka untuk peluang kerja, kolaborasi, atau sekadar berdiskusi. Jangan ragu untuk menghubungi!"
+  }
+};
+
+function setLang(l) {
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-id').classList.toggle('active', l==='id');
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const v = T[l][el.getAttribute('data-i')];
+    if (v !== undefined) el.textContent = v;
+  });
+}
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('on'), i * 70);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const photoInput = document.getElementById('photoUpload');
+const profileImg = document.getElementById('profileImg');
+const avatarInitials = document.getElementById('avatarInitials');
+
+const savedPhoto = localStorage.getItem('profilePhoto');
+if (savedPhoto && profileImg && avatarInitials) {
+  profileImg.src = savedPhoto;
+  profileImg.style.display = 'block';
+  avatarInitials.style.display = 'none';
+}
+
+if (photoInput && profileImg && avatarInitials) {
+  photoInput.addEventListener('change', () => {
+    const file = photoInput.files && photoInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      profileImg.src = reader.result;
+      profileImg.style.display = 'block';
+      avatarInitials.style.display = 'none';
+      localStorage.setItem('profilePhoto', reader.result);
+    });
+    reader.readAsDataURL(file);
+  });
+}
+
+setLang('en');
+</script>
+</body>
+</html>
