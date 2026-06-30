@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ridzal Ade Putera | Portfolio</title>
 <meta name="description" content="Portfolio website for Ridzal Ade Putera, covering education, data analysis, field operations, projects, and certifications.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ridzal Ade Putera | Portfolio">
+<meta property="og:description" content="Lulusan S1 Farmasi dengan pengalaman di bidang pendidikan, operasi lapangan, dan teknologi digital. Lihat pengalaman kerja, keahlian, dan proyek saya.">
+<meta property="og:image" content="https://ridzalap0112.github.io/portofolio-website/assets/img/favicon-512.png">
+<meta property="og:url" content="https://ridzalap0112.github.io/portofolio-website/">
+<meta property="og:locale" content="id_ID">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ridzal Ade Putera | Portfolio">
+<meta name="twitter:description" content="Lulusan S1 Farmasi dengan pengalaman di bidang pendidikan, operasi lapangan, dan teknologi digital.">
+<meta name="twitter:image" content="https://ridzalap0112.github.io/portofolio-website/assets/img/favicon-512.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -94,7 +115,7 @@ nav {
 .hero-name em { font-style:italic; color:var(--gold); }
 .hero-role { font-size:1rem; font-weight:300; color:var(--text-2); margin-bottom:1.8rem; letter-spacing:0.03em; }
 .hero-bio { font-size:0.91rem; line-height:1.85; color:var(--text-3); max-width:500px; margin-bottom:2.5rem; }
-.hero-cta { display:flex; gap:0.9rem; }
+.hero-cta { display:flex; gap:0.9rem; flex-wrap:wrap; }
 .btn-dark {
   background:var(--navy); color:#fff; padding:0.72rem 1.7rem; border-radius:var(--radius);
   font-size:0.82rem; font-weight:500; letter-spacing:0.06em; text-decoration:none;
@@ -314,6 +335,7 @@ section { padding:6rem 5vw; }
     <div class="hero-cta">
       <a href="#experience" class="btn-dark" data-i="hero.cta1">View Experience</a>
       <a href="contact.html" class="btn-ghost" data-i="hero.cta2">Get in Touch</a>
+      <a href="assets/cv/Ridzal_Ade_Putera_CV_EN.pdf" id="cvDownloadBtn" class="btn-ghost" download data-i="hero.cta3">Download CV</a>
     </div>
   </div>
 
@@ -377,8 +399,8 @@ section { padding:6rem 5vw; }
     </div>
     <div class="skill-card reveal">
       <div class="skill-ico"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <div class="skill-nm">Basic Programming</div>
-      <div class="skill-ds">HTML &amp; CSS</div>
+      <div class="skill-nm">Web Development</div>
+      <div class="skill-ds" data-i="sk.web">HTML, CSS, React &amp; Git</div>
     </div>
     <div class="skill-card reveal">
       <div class="skill-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
@@ -532,22 +554,6 @@ section { padding:6rem 5vw; }
           <a class="cert-link" href="https://drive.google.com/drive/folders/1VxZURkYK5os9RDyRGENTMTU3MNMbnGZ_?usp=drive_link" target="_blank" rel="noopener" data-i="cert.viewLink">Lihat Sertifikat →</a>
         </div>
       </div>
-      <div class="cert-item reveal">
-        <div class="cert-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
-        <div>
-          <div class="cert-nm" data-i="cert2.nm">Microsoft Office Certification</div>
-          <div class="cert-is">LKP Borju · 2024–2026</div>
-          <a class="cert-link" href="https://drive.google.com/drive/folders/1VxZURkYK5os9RDyRGENTMTU3MNMbnGZ_?usp=drive_link" target="_blank" rel="noopener" data-i="cert.viewLink">Lihat Sertifikat →</a>
-        </div>
-      </div>
-      <div class="cert-item reveal">
-        <div class="cert-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-        <div>
-          <div class="cert-nm" data-i="cert3.nm">Microsoft Office Professional</div>
-          <div class="cert-is">MySkill · 2024–2026</div>
-          <a class="cert-link" href="https://drive.google.com/drive/folders/1VxZURkYK5os9RDyRGENTMTU3MNMbnGZ_?usp=drive_link" target="_blank" rel="noopener" data-i="cert.viewLink">Lihat Sertifikat →</a>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -584,12 +590,12 @@ const T = {
     "hero.eyebrow":"Portfolio · 2026",
     "hero.role":"Educator · Data Analyst · Field Operator",
     "hero.bio":"Bachelor of Pharmacy graduate with hands-on experience spanning computer education, geoelectric field operations, and academic instruction. Detail-oriented, adaptable, and driven by continuous learning.",
-    "hero.cta1":"View Experience","hero.cta2":"Get in Touch",
+    "hero.cta1":"View Experience","hero.cta2":"Get in Touch","hero.cta3":"Download CV",
     "card.sub":"S1 Farmasi — Universitas Pakuan\nKota Bogor, Jawa Barat",
     "stat.exp":"Yrs Exp",
     "skills.label":"Skills","skills.title":"Skills & Tools",
     "skills.sub":"Technical and interpersonal capabilities developed through professional experience and education.",
-    "sk.office":"Word, Excel, PowerPoint","sk.spss":"Statistical Analysis","sk.adobe":"Premiere & Photoshop",
+    "sk.office":"Word, Excel, PowerPoint","sk.spss":"Statistical Analysis","sk.adobe":"Premiere & Photoshop","sk.web":"HTML, CSS, React & Git",
     "sk.comm.nm":"Communication","sk.comm.ds":"Teamwork & Leadership",
     "sk.lab.nm":"Lab Analysis","sk.lab.ds":"Gravimetry & Extraction",
     "sk.geo.nm":"Geoelectric Survey","sk.geo.ds":"Groundwater Mapping",
@@ -630,8 +636,6 @@ const T = {
     "edu2.deg":"High School — Science Major",
     "edu2.extra":"Representative in cultural exchange programs · TOEFL: 519",
     "cert1.nm":"Urban Drainage Site Supervisor",
-    "cert2.nm":"Microsoft Office Certification",
-    "cert3.nm":"Microsoft Office Professional",
     "cert.viewLink":"View Certificate →",
     "contact.sub":"Open to job opportunities, collaborations, or just a good conversation. Feel free to reach out!"
   },
@@ -640,12 +644,12 @@ const T = {
     "hero.eyebrow":"Portofolio · 2026",
     "hero.role":"Pendidik · Analis Data · Operator Lapangan",
     "hero.bio":"Lulusan S1 Farmasi dengan pengalaman nyata di bidang pendidikan komputer, operasi lapangan geoelectric, dan pengajaran akademik. Teliti, mudah beradaptasi, dan berkomitmen pada pembelajaran berkelanjutan.",
-    "hero.cta1":"Lihat Pengalaman","hero.cta2":"Hubungi Saya",
+    "hero.cta1":"Lihat Pengalaman","hero.cta2":"Hubungi Saya","hero.cta3":"Unduh CV",
     "card.sub":"S1 Farmasi — Universitas Pakuan\nKota Bogor, Jawa Barat",
     "stat.exp":"Thn Kerja",
     "skills.label":"Keahlian","skills.title":"Keahlian & Alat",
     "skills.sub":"Kemampuan teknis dan interpersonal yang dikembangkan melalui pengalaman kerja dan pendidikan.",
-    "sk.office":"Word, Excel, PowerPoint","sk.spss":"Analisis Statistik","sk.adobe":"Premiere & Photoshop",
+    "sk.office":"Word, Excel, PowerPoint","sk.spss":"Analisis Statistik","sk.adobe":"Premiere & Photoshop","sk.web":"HTML, CSS, React & Git",
     "sk.comm.nm":"Komunikasi","sk.comm.ds":"Kerja Tim & Kepemimpinan",
     "sk.lab.nm":"Analisis Laboratorium","sk.lab.ds":"Gravimetri & Ekstraksi",
     "sk.geo.nm":"Survei Geoelectric","sk.geo.ds":"Pemetaan Air Tanah",
@@ -686,8 +690,6 @@ const T = {
     "edu2.deg":"SMA — Jurusan IPA",
     "edu2.extra":"Perwakilan sekolah dalam program pertukaran budaya · TOEFL: 519",
     "cert1.nm":"Pengawas Lapangan Drainase Perkotaan",
-    "cert2.nm":"Sertifikasi Microsoft Office",
-    "cert3.nm":"Microsoft Office Professional",
     "cert.viewLink":"Lihat Sertifikat →",
     "contact.sub":"Terbuka untuk peluang kerja, kolaborasi, atau sekadar berdiskusi. Jangan ragu untuk menghubungi!"
   }
@@ -700,6 +702,8 @@ function setLang(l) {
     const v = T[l][el.getAttribute('data-i')];
     if (v !== undefined) el.textContent = v;
   });
+  const cvBtn = document.getElementById('cvDownloadBtn');
+  if (cvBtn) cvBtn.href = l === 'id' ? 'assets/cv/Ridzal_Ade_Putera_CV_ID.pdf' : 'assets/cv/Ridzal_Ade_Putera_CV_EN.pdf';
 }
 
 const io = new IntersectionObserver((entries) => {
